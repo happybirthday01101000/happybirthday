@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>The Universe for Humaira Ahmed Sneha</title>
   
+  <!-- Premium Cinematic Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -16,6 +17,7 @@
       margin: 0;
       padding: 0;
       user-select: none;
+      -webkit-tap-highlight-color: transparent; /* Fix for mobile tap highlight */
     }
     
     :root {
@@ -75,6 +77,7 @@
       z-index: 2;
       transform: translate(-50%, -50%);
       transition: transform 0.1s ease-out;
+      display: none; /* Disable for mobile initially, enabled by JS on desktop */
     }
 
     .aurora-layer {
@@ -115,7 +118,7 @@
 
     .gatekeeper-title {
       font-family: var(--font-cinzel);
-      font-size: 1.5rem;
+      font-size: clamp(1.2rem, 4vw, 1.5rem); /* Mobile Fluid Typography */
       letter-spacing: 0.4em;
       text-transform: uppercase;
       margin-bottom: 40px;
@@ -229,7 +232,7 @@
 
     .prologue-text {
       font-family: var(--font-cinzel);
-      font-size: 1.25rem;
+      font-size: clamp(1rem, 3.5vw, 1.25rem);
       letter-spacing: 0.3em;
       line-height: 2;
       color: rgba(255, 255, 255, 0.85);
@@ -239,7 +242,7 @@
 
     .reveal-name {
       font-family: var(--font-cinzel);
-      font-size: clamp(2rem, 5vw, 4.5rem);
+      font-size: clamp(1.8rem, 5vw, 4.5rem);
       letter-spacing: 0.5em;
       text-transform: uppercase;
       font-weight: 400;
@@ -315,7 +318,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 100px 20px;
+      padding: 100px 20px; /* Reduced vertical padding for better scrolling */
     }
 
     .scroll-reveal {
@@ -353,7 +356,7 @@
     /* --- SECTION 1: MAIN HERO --- */
     .hero-pretitle {
       font-family: var(--font-cinzel);
-      font-size: 0.9rem;
+      font-size: clamp(0.7rem, 2vw, 0.9rem);
       letter-spacing: 0.4em;
       text-transform: uppercase;
       color: var(--accent-gold);
@@ -362,7 +365,7 @@
 
     .hero-title {
       font-family: var(--font-cinzel);
-      font-size: clamp(1.8rem, 4vw, 3.2rem);
+      font-size: clamp(1.6rem, 4.5vw, 3.2rem);
       letter-spacing: 0.3em;
       text-transform: uppercase;
       font-weight: 400;
@@ -379,7 +382,7 @@
 
     .hero-epigram {
       font-family: var(--font-cinzel);
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 3vw, 1.2rem);
       letter-spacing: 0.25em;
       line-height: 1.8;
       color: rgba(255, 255, 255, 0.9);
@@ -431,7 +434,7 @@
     }
 
     .letter-paragraph {
-      font-size: 1.05rem;
+      font-size: clamp(0.95rem, 3.2vw, 1.05rem);
       line-height: 2.1;
       font-weight: 300;
       color: rgba(255, 255, 255, 0.8);
@@ -442,7 +445,7 @@
 
     .letter-signature {
       font-family: var(--font-cinzel);
-      font-size: 0.85rem;
+      font-size: clamp(0.7rem, 2.5vw, 0.85rem);
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--accent-gold);
@@ -467,7 +470,7 @@
 
     .quote-text {
       font-family: var(--font-cinzel);
-      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-size: clamp(1.2rem, 3.5vw, 2.2rem);
       line-height: 1.6;
       letter-spacing: 0.15em;
       color: #ffffff;
@@ -476,7 +479,7 @@
     }
 
     .quote-author {
-      font-size: 0.85rem;
+      font-size: clamp(0.7rem, 2.2vw, 0.85rem);
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -491,14 +494,14 @@
 
     .interactive-sky-header h2 {
       font-family: var(--font-cinzel);
-      font-size: 1.8rem;
+      font-size: clamp(1.4rem, 3.8vw, 1.8rem);
       letter-spacing: 0.3em;
       text-transform: uppercase;
       margin-bottom: 20px;
     }
 
     .interactive-sky-header p {
-      font-size: 0.95rem;
+      font-size: clamp(0.8rem, 2.8vw, 0.95rem);
       letter-spacing: 0.1em;
       color: var(--text-muted);
     }
@@ -507,7 +510,8 @@
       position: relative;
       width: 100%;
       max-width: 1000px;
-      height: 600px;
+      height: 50vh; /* Responsive height unit */
+      min-height: 350px; /* But keep a minimum playable area */
       background: rgba(255, 255, 255, 0.01);
       border: 1px solid rgba(255, 255, 255, 0.03);
       border-radius: 8px;
@@ -527,6 +531,7 @@
       transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
     }
 
+    /* Keep hover behavior same, adds difficulty/interactivity on mobile tap */
     .interactive-star:hover {
       transform: translate(-50%, -50%) scale(2.5);
       box-shadow: 0 0 20px var(--accent-gold), 0 0 30px #ffffff;
@@ -541,19 +546,20 @@
 
     .hud-wish-overlay {
       position: absolute;
-      bottom: 30px;
+      bottom: 20px; /* Closer to bottom for mobile */
       left: 50%;
       transform: translateX(-50%);
       background: rgba(5, 5, 5, 0.85);
       border: 1px solid rgba(212, 175, 55, 0.3);
-      padding: 16px 36px;
+      padding: clamp(10px, 3vw, 16px) clamp(20px, 6vw, 36px);
       border-radius: 4px;
       font-family: var(--font-cinzel);
-      font-size: 1rem;
+      font-size: clamp(0.8rem, 3vw, 1rem);
       letter-spacing: 0.2em;
       text-transform: uppercase;
       text-align: center;
-      min-width: 320px;
+      min-width: 280px; /* Slightly narrower min-width */
+      max-width: 90%; /* Handle small screen overflow */
       pointer-events: none;
       opacity: 0;
       transition: opacity 0.5s ease;
@@ -567,8 +573,8 @@
 
     /* --- SECTION 5: CULMINATION --- */
     .moon-manifestation {
-      width: 220px;
-      height: 220px;
+      width: clamp(140px, 35vw, 220px);
+      height: clamp(140px, 35vw, 220px);
       border-radius: 50%;
       background: #ffffff;
       box-shadow: 0 0 60px rgba(255, 255, 255, 0.2), 0 0 120px rgba(255, 255, 255, 0.1), inset -20px -20px 50px rgba(0,0,0,0.1);
@@ -592,7 +598,7 @@
 
     .final-title {
       font-family: var(--font-cinzel);
-      font-size: clamp(1.8rem, 4vw, 3.5rem);
+      font-size: clamp(1.6rem, 4.8vw, 3.5rem);
       letter-spacing: 0.4em;
       text-transform: uppercase;
       line-height: 1.5;
@@ -602,7 +608,7 @@
 
     .final-benediction {
       font-family: var(--font-cinzel);
-      font-size: 1.15rem;
+      font-size: clamp(0.9rem, 3.2vw, 1.15rem);
       line-height: 2.2;
       letter-spacing: 0.2em;
       color: rgba(255, 255, 255, 0.85);
@@ -618,52 +624,60 @@
       z-index: 5;
     }
 
-    /* --- RESPONSIVE CALIBRATION --- */
+    /* --- MOBILE SPECIFIC CALIBRATIONS (VIEWPORT < 768PX) --- */
     @media (max-width: 768px) {
       .premium-glass-card {
         padding: 40px 24px;
       }
       section {
-        padding: 60px 15px;
+        padding: 60px 15px; /* Tighter padding for mobile vertical space */
       }
       .constellation-interactive-grid {
-        height: 450px;
+        height: 50vh; /* Playable area is half height */
       }
       .audio-control-hub {
         top: auto;
-        bottom: 20px;
+        bottom: 20px; /* Lower music button to thumb reach */
         right: 20px;
+      }
+      .cinematic-frame img {
+        object-position: center 30%; /* Shift focus down slightly as screen narrows */
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Background Engine Components -->
   <canvas id="universe-canvas"></canvas>
   <div class="ambient-glow" id="mouse-glow"></div>
   <div class="aurora-layer"></div>
 
+  <!-- Hidden Audio Iframe Container -->
   <div id="hidden-theater">
     <div id="youtube-player"></div>
   </div>
 
+  <!-- Audio Floating Control Hub -->
   <div class="audio-control-hub">
     <button class="floating-music-btn" id="music-toggle-btn" style="display: none;">
       <span id="music-btn-icon">⏵</span> <span id="music-btn-text">Play Music</span>
     </button>
   </div>
 
+  <!-- STAGE 1: THE GATEKEEPER -->
   <div id="gatekeeper-stage">
     <div class="gatekeeper-wrapper">
       <h1 class="gatekeeper-title">What is your favorite number?</h1>
       <div class="input-container">
-        <input type="text" id="gate-input" class="premium-input" maxlength="10" autocomplete="off" spellcheck="false">
+        <input type="text" id="gate-input" class="premium-input" maxlength="10" autocomplete="off" spellcheck="false" inputmode="numeric">
       </div>
       <button id="gate-submit-btn" class="premium-btn">Enter</button>
     </div>
     <div id="glitch-text" class="glitch-overlay-text">Not everyone is meant to witness this story.</div>
   </div>
 
+  <!-- STAGE 2: THE CINEMATIC PROLOGUE -->
   <div id="prologue-stage">
     <div class="prologue-container">
       <div id="prologue-text-node" class="prologue-text"></div>
@@ -671,8 +685,10 @@
     </div>
   </div>
 
+  <!-- STAGE 3: THE MAIN UNIVERSE -->
   <main id="main-universe">
 
+    <!-- HERO SECTION -->
     <section id="hero-node">
       <div class="premium-glass-card scroll-reveal">
         <h4 class="hero-pretitle">Happy Birthday</h4>
@@ -690,6 +706,7 @@
       </div>
     </section>
 
+    <!-- THE LETTER SECTION -->
     <section id="letter-node">
       <div class="letter-container scroll-reveal">
         <p class="letter-paragraph">
@@ -705,6 +722,7 @@
       </div>
     </section>
 
+    <!-- CINEMATIC QUOTES SECTION -->
     <section id="quotes-node">
       <div class="quotes-gallery">
         <div class="quote-item scroll-reveal">
@@ -718,6 +736,7 @@
       </div>
     </section>
 
+    <!-- INTERACTIVE CONSTELLATION SECTION -->
     <section id="interactive-node">
       <div class="interactive-sky-header scroll-reveal">
         <h2>Interactive Vault</h2>
@@ -725,10 +744,12 @@
       </div>
       
       <div class="constellation-interactive-grid scroll-reveal" id="interactive-grid-container">
+        <!-- Interactive stars populated dynamically via core controller -->
         <div class="hud-wish-overlay" id="hud-wish-box">Select a star to read the universe</div>
       </div>
     </section>
 
+    <!-- CULMINATION ENDING SECTION -->
     <section id="ending-node">
       <canvas id="confetti-canvas"></canvas>
       <div class="moon-manifestation scroll-reveal"></div>
@@ -745,12 +766,14 @@
 
   </main>
 
+  <!-- Core JavaScript Architecture Engine -->
   <script>
     /* --- CONFIGURATION & GLOBAL ARCHITECTURE --- */
     const CONFIG = {
       correctKey: "7",
       totalStars: 250,
       shootingStarInterval: 4000,
+      isMobile: /Mobi|Android/i.test(navigator.userAgent), // Mobile detection
       wishes: [
         "Keep smiling.", "Believe in yourself.", "The world is brighter with you.", "Dream fearlessly.", "Happy Birthday.",
         "Walk with pride.", "Absolute grace.", "Endless possibilities.", "Command your destiny.", "Infinite potential.",
@@ -838,9 +861,9 @@
           star.opacity += star.speed;
           if (star.opacity > 1 || star.opacity < 0) star.speed = -star.speed;
           
-          // Apply Mouse Parallax
-          let pX = star.x + (state.mouseX * 0.015);
-          let pY = star.y + (state.mouseY * 0.015);
+          // Apply Mouse Parallax only on non-mobile
+          let pX = star.x + (!CONFIG.isMobile ? (state.mouseX * 0.015) : 0);
+          let pY = star.y + (!CONFIG.isMobile ? (state.mouseY * 0.015) : 0);
 
           this.ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0, Math.min(1, star.opacity))})`;
           this.ctx.beginPath();
@@ -904,7 +927,7 @@
       }
       spawn() {
         this.active = true;
-        this.particles = Array.from({ length: 120 }, () => ({
+        this.particles = Array.from({ length: CONFIG.isMobile ? 80 : 120 }, () => ({ // Reduced particles on mobile
           x: Math.random() * this.canvas.width,
           y: Math.random() * -50,
           size: Math.random() * 4 + 2,
@@ -942,7 +965,6 @@
     }
 
     /* --- AUDIO BACKBONE CONTROLLER (YOUTUBE API) --- */
-    // Synchronous callback matching requirements of Global Scope Script Loader
     function onYouTubeIframeAPIReady() {
       state.playerInstance = new YT.Player('youtube-player', {
         videoId: 'xCHsyht5eac',
@@ -961,7 +983,6 @@
             e.target.setVolume(50);
           },
           onStateChange: (e) => {
-            // Re-verify sound persistence
             if (e.data === YT.PlayerState.ENDED) {
               state.playerInstance.playVideo();
             }
@@ -979,32 +1000,34 @@
       }
 
       bindEvents() {
-        // Interactive Mouse Parallax Tracks
-        window.addEventListener('mousemove', (e) => {
-          state.mouseX = e.clientX - window.innerWidth / 2;
-          state.mouseY = e.clientY - window.innerHeight / 2;
-          
+        // Interactive Mouse Parallax Tracks (only on desktop)
+        if (!CONFIG.isMobile) {
           const glow = document.getElementById('mouse-glow');
-          glow.style.left = `${e.clientX}px`;
-          glow.style.top = `${e.clientY}px`;
-        });
+          glow.style.display = 'block'; // Enable glow
+          window.addEventListener('mousemove', (e) => {
+            state.mouseX = e.clientX - window.innerWidth / 2;
+            state.mouseY = e.clientY - window.innerHeight / 2;
+            glow.style.left = `${e.clientX}px`;
+            glow.style.top = `${e.clientY}px`;
+          });
+
+          // Media Frame Interactive Matrix
+          const frame = document.getElementById('interactive-media-frame');
+          frame.addEventListener('mousemove', (e) => {
+            const rect = frame.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width/2;
+            const y = e.clientY - rect.top - rect.height/2;
+            frame.style.transform = `rotateY(${x * 0.08}deg) rotateX(${-y * 0.08}deg) scale3d(1.02, 1.02, 1.02)`;
+          });
+          frame.addEventListener('mouseleave', () => {
+            frame.style.transform = `rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)`;
+          });
+        }
 
         // Gatekeeper Controls
         document.getElementById('gate-submit-btn').addEventListener('click', () => this.evaluateGateKey());
         document.getElementById('gate-input').addEventListener('keydown', (e) => {
           if (e.key === 'Enter') this.evaluateGateKey();
-        });
-
-        // Media Frame Interactive Matrix
-        const frame = document.getElementById('interactive-media-frame');
-        frame.addEventListener('mousemove', (e) => {
-          const rect = frame.getBoundingClientRect();
-          const x = e.clientX - rect.left - rect.width/2;
-          const y = e.clientY - rect.top - rect.height/2;
-          frame.style.transform = `rotateY(${x * 0.08}deg) rotateX(${-y * 0.08}deg) scale3d(1.02, 1.02, 1.02)`;
-        });
-        frame.addEventListener('mouseleave', () => {
-          frame.style.transform = `rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)`;
         });
 
         // Floating Music Engine Controls
@@ -1113,10 +1136,9 @@
       }
 
       attemptAudioAutoplay() {
-        // Call verification routine for IFrame API
         if (state.playerInstance && typeof state.playerInstance.playVideo === 'function') {
           state.playerInstance.playVideo();
-          // Verify if browser environment blocked execution context
+          // Autoplay on mobile is aggressively blocked. Assume manual play needed.
           setTimeout(() => {
             if (state.playerInstance.getPlayerState() !== YT.PlayerState.PLAYING) {
               this.displayAudioManualTrigger();
@@ -1124,7 +1146,7 @@
               state.audioPlaying = true;
               this.updateAudioInterfaceContext();
             }
-          }, 1000);
+          }, CONFIG.isMobile ? 2500 : 1000); // Wait longer on mobile to check
         } else {
           this.displayAudioManualTrigger();
         }
@@ -1151,7 +1173,7 @@
         const btn = document.getElementById('music-toggle-btn');
         const icon = document.getElementById('music-btn-icon');
         const txt = document.getElementById('music-btn-text');
-        btn.style.display = 'flex'; // Enforce persistent layout visibility
+        btn.style.display = 'flex';
         
         if (state.audioPlaying) {
           icon.innerHTML = '⏸';
@@ -1175,32 +1197,44 @@
         const width = grid.clientWidth;
         const height = grid.clientHeight;
         
-        // Populate precise wishes array matching exact programmatic requirements
         CONFIG.wishes.forEach((wish) => {
           const star = document.createElement('div');
           star.className = 'interactive-star';
           
           // Uniform spatial scattering allocation
           const posX = Math.random() * (width - 40) + 20;
-          const posY = Math.random() * (height - 100) + 30;
+          const posY = Math.random() * (height - 80) + 30; // Mobile bottom space
           
           star.style.left = `${posX}px`;
           star.style.top = `${posY}px`;
           
-          star.addEventListener('click', (e) => {
+          // mobile specific tap handling
+          const triggerWish = (e) => {
             e.stopPropagation();
             star.classList.add('discovered');
             this.broadcastWishHUD(wish);
-          });
+          };
+
+          if(CONFIG.isMobile) {
+            star.addEventListener('touchend', triggerWish); // touchend is faster on mobile
+          } else {
+            star.addEventListener('click', triggerWish);
+          }
           
           grid.appendChild(star);
         });
       }
 
+      broadcastWishHUD(message) {
+        const hud = document.getElementById('hud-wish-box');
+        hud.innerHTML = message;
+        hud.classList.add('active');
+      }
+
       initScrollReveal() {
         const observerOptions = {
           root: null,
-          threshold: 0.12,
+          threshold: CONFIG.isMobile ? 0.05 : 0.12, // More aggressive mobile reveal
           rootMargin: "0px"
         };
 
@@ -1208,7 +1242,7 @@
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add('revealed');
-              // Trigger final physics celebration sequence if endpoint observed
+              // Trigger final celebration sequence
               if (entry.target.classList.contains('final-greetings-box')) {
                 this.confetti.spawn();
               }
@@ -1224,7 +1258,7 @@
 
     // Initialize Global App Pipeline upon Structural Readiness
     document.addEventListener('DOMContentLoaded', () => {
-      // Dynamic ingestion injection of script tags tracking cross origin framing limits
+      // Load IFrame API
       const tag = document.createElement('script');
       tag.src = "https://www.youtube.com/iframe_api";
       const firstScriptTag = document.getElementsByTagName('script')[0];
